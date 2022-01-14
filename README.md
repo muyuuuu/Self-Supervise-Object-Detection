@@ -1,8 +1,8 @@
 数据集为欧卡的 [FloW](http://www.orca-tech.cn/datasets/FloW/FloW-Img) 数据集，使用了 `mmdetection` 作为工具。
 
 <p align="center">
-    <img src="./sample/1.jpg" width="100">
-    <img src="./sample/2.jpg" width="100">
+    <img src="./sample/1.jpg" width="400">
+    <img src="./sample/2.jpg" width="400">
 </p>
 
 - `coco-tools` 下面是将 `VOC` 格式的标注转 `json` 格式的标注
