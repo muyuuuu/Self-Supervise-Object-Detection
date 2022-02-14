@@ -52,3 +52,11 @@ best mAP with center loss for backbone:
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.569
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.587
 ```
+
+## logs
+
+- `center.log`，log of center loss for classification
+- `detect_center.log`, log of using center loss to train backbone the use it for detection
+- `cls_out.log`, log of cross entropy for classification
+- `cls_detect.log`, log of using cross entropy loss to train backbone the use it for detection
+- `yolox.log`, log of doesn't using pretrained backbone

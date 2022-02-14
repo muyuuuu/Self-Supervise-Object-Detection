@@ -1,0 +1,604 @@
+nohup: ignoring input
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:35: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:597: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:836: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, fit_path=True,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:862: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, positive=False):
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1097: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1344: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  max_n_alphas=1000, n_jobs=None, eps=np.finfo(np.float).eps,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/least_angle.py:1480: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, copy_X=True, positive=False):
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:152: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  precompute=False, eps=np.finfo(np.float).eps,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:320: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=np.finfo(np.float).eps, random_state=None,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/linear_model/randomized_l1.py:580: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  eps=4 * np.finfo(np.float).eps, n_jobs=None,
+/home/liyanni/anaconda3/envs/GPU-info/lib/python3.7/site-packages/sklearn/decomposition/online_lda.py:31: DeprecationWarning: `np.float` is a deprecated alias for the builtin `float`. To silence this warning, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  EPS = np.finfo(np.float).eps
+2022-02-13 08:21:58,579 - mmdet - INFO - Environment info:
+------------------------------------------------------------
+sys.platform: linux
+Python: 3.7.9 (default, Aug 31 2020, 12:42:55) [GCC 7.3.0]
+CUDA available: True
+GPU 0,1,2: Tesla P40
+CUDA_HOME: /usr/local/cuda
+NVCC: Cuda compilation tools, release 9.2, V9.2.148
+GCC: gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-11)
+PyTorch: 1.7.1+cu92
+PyTorch compiling details: PyTorch built with:
+  - GCC 7.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v1.6.0 (Git Hash 5ef631a030a6f73131c77892041042805a06064f)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 9.2
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70
+  - CuDNN 7.6.3
+  - Magma 2.5.2
+  - Build settings: BLAS=MKL, BUILD_TYPE=Release, CXX_FLAGS= -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DUSE_VULKAN_WRAPPER -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, USE_CUDA=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, 
+
+TorchVision: 0.8.2+cu92
+OpenCV: 4.5.2
+MMCV: 1.4.3
+MMCV Compiler: GCC 7.3
+MMCV CUDA Compiler: 9.2
+MMDetection: 2.20.0+ff9bc39
+------------------------------------------------------------
+
+2022-02-13 08:21:58,946 - mmdet - INFO - Distributed training: False
+2022-02-13 08:21:59,298 - mmdet - INFO - Config:
+optimizer = dict(
+    type='SGD',
+    lr=0.00125,
+    momentum=0.9,
+    weight_decay=0.0005,
+    nesterov=True,
+    paramwise_cfg=dict(norm_decay_mult=0.0, bias_decay_mult=0.0))
+optimizer_config = dict(grad_clip=None)
+lr_config = dict(
+    policy='YOLOX',
+    warmup='exp',
+    by_epoch=False,
+    warmup_by_epoch=True,
+    warmup_ratio=1,
+    warmup_iters=5,
+    num_last_epochs=15,
+    min_lr_ratio=0.05)
+runner = dict(type='EpochBasedRunner', max_epochs=300)
+checkpoint_config = dict(interval=10)
+log_config = dict(interval=50, hooks=[dict(type='TextLoggerHook')])
+custom_hooks = [
+    dict(type='YOLOXModeSwitchHook', num_last_epochs=15, priority=48),
+    dict(type='SyncNormHook', num_last_epochs=15, interval=10, priority=48),
+    dict(
+        type='ExpMomentumEMAHook',
+        resume_from=None,
+        momentum=0.0001,
+        priority=49)
+]
+dist_params = dict(backend='nccl')
+log_level = 'INFO'
+load_from = None
+resume_from = None
+workflow = [('train', 1)]
+img_scale = (640, 640)
+model = dict(
+    type='YOLOX',
+    input_size=(640, 640),
+    random_size_range=(15, 25),
+    random_size_interval=10,
+    backbone=dict(type='CSPDarknet', deepen_factor=0.33, widen_factor=0.5),
+    neck=dict(
+        type='YOLOXPAFPN',
+        in_channels=[128, 256, 512],
+        out_channels=128,
+        num_csp_blocks=1),
+    bbox_head=dict(
+        type='YOLOXHead', num_classes=1, in_channels=128, feat_channels=128),
+    train_cfg=dict(assigner=dict(type='SimOTAAssigner', center_radius=2.5)),
+    test_cfg=dict(score_thr=0.01, nms=dict(type='nms', iou_threshold=0.65)))
+data_root = '/home/liyanni/1307/ljw/flow/'
+dataset_type = 'CocoDataset'
+train_pipeline = [
+    dict(type='Mosaic', img_scale=(640, 640), pad_val=114.0),
+    dict(
+        type='RandomAffine', scaling_ratio_range=(0.1, 2),
+        border=(-320, -320)),
+    dict(
+        type='MixUp',
+        img_scale=(640, 640),
+        ratio_range=(0.8, 1.6),
+        pad_val=114.0),
+    dict(type='YOLOXHSVRandomAug'),
+    dict(type='RandomFlip', flip_ratio=0.5),
+    dict(type='Resize', img_scale=(640, 640), keep_ratio=True),
+    dict(
+        type='Pad',
+        pad_to_square=True,
+        pad_val=dict(img=(114.0, 114.0, 114.0))),
+    dict(type='FilterAnnotations', min_gt_bbox_wh=(1, 1), keep_empty=False),
+    dict(type='DefaultFormatBundle'),
+    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels'])
+]
+classes = 'bottle'
+train_dataset = dict(
+    type='MultiImageMixDataset',
+    dataset=dict(
+        type='CocoDataset',
+        ann_file='/home/liyanni/1307/ljw/flow/annotations/train.json',
+        img_prefix='/home/liyanni/1307/ljw/flow/FloW_IMG/training/images/',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(type='LoadAnnotations', with_bbox=True)
+        ],
+        filter_empty_gt=False),
+    pipeline=[
+        dict(type='Mosaic', img_scale=(640, 640), pad_val=114.0),
+        dict(
+            type='RandomAffine',
+            scaling_ratio_range=(0.1, 2),
+            border=(-320, -320)),
+        dict(
+            type='MixUp',
+            img_scale=(640, 640),
+            ratio_range=(0.8, 1.6),
+            pad_val=114.0),
+        dict(type='YOLOXHSVRandomAug'),
+        dict(type='RandomFlip', flip_ratio=0.5),
+        dict(type='Resize', img_scale=(640, 640), keep_ratio=True),
+        dict(
+            type='Pad',
+            pad_to_square=True,
+            pad_val=dict(img=(114.0, 114.0, 114.0))),
+        dict(
+            type='FilterAnnotations', min_gt_bbox_wh=(1, 1), keep_empty=False),
+        dict(type='DefaultFormatBundle'),
+        dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels'])
+    ])
+test_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(
+        type='MultiScaleFlipAug',
+        img_scale=(640, 640),
+        flip=False,
+        transforms=[
+            dict(type='Resize', keep_ratio=True),
+            dict(type='RandomFlip'),
+            dict(
+                type='Pad',
+                pad_to_square=True,
+                pad_val=dict(img=(114.0, 114.0, 114.0))),
+            dict(type='DefaultFormatBundle'),
+            dict(type='Collect', keys=['img'])
+        ])
+]
+data = dict(
+    samples_per_gpu=8,
+    workers_per_gpu=4,
+    persistent_workers=True,
+    classes='bottle',
+    train=dict(
+        type='MultiImageMixDataset',
+        dataset=dict(
+            type='CocoDataset',
+            ann_file='/home/liyanni/1307/ljw/flow/annotations/train.json',
+            img_prefix='/home/liyanni/1307/ljw/flow/FloW_IMG/training/images/',
+            pipeline=[
+                dict(type='LoadImageFromFile'),
+                dict(type='LoadAnnotations', with_bbox=True)
+            ],
+            filter_empty_gt=False),
+        pipeline=[
+            dict(type='Mosaic', img_scale=(640, 640), pad_val=114.0),
+            dict(
+                type='RandomAffine',
+                scaling_ratio_range=(0.1, 2),
+                border=(-320, -320)),
+            dict(
+                type='MixUp',
+                img_scale=(640, 640),
+                ratio_range=(0.8, 1.6),
+                pad_val=114.0),
+            dict(type='YOLOXHSVRandomAug'),
+            dict(type='RandomFlip', flip_ratio=0.5),
+            dict(type='Resize', img_scale=(640, 640), keep_ratio=True),
+            dict(
+                type='Pad',
+                pad_to_square=True,
+                pad_val=dict(img=(114.0, 114.0, 114.0))),
+            dict(
+                type='FilterAnnotations',
+                min_gt_bbox_wh=(1, 1),
+                keep_empty=False),
+            dict(type='DefaultFormatBundle'),
+            dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels'])
+        ]),
+    val=dict(
+        type='CocoDataset',
+        ann_file='/home/liyanni/1307/ljw/flow/annotations/test.json',
+        img_prefix='/home/liyanni/1307/ljw/flow/FloW_IMG/test/images/',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(
+                type='MultiScaleFlipAug',
+                img_scale=(640, 640),
+                flip=False,
+                transforms=[
+                    dict(type='Resize', keep_ratio=True),
+                    dict(type='RandomFlip'),
+                    dict(
+                        type='Pad',
+                        pad_to_square=True,
+                        pad_val=dict(img=(114.0, 114.0, 114.0))),
+                    dict(type='DefaultFormatBundle'),
+                    dict(type='Collect', keys=['img'])
+                ])
+        ]),
+    test=dict(
+        type='CocoDataset',
+        ann_file='/home/liyanni/1307/ljw/flow/annotations/test.json',
+        img_prefix='/home/liyanni/1307/ljw/flow/FloW_IMG/test/images/',
+        pipeline=[
+            dict(type='LoadImageFromFile'),
+            dict(
+                type='MultiScaleFlipAug',
+                img_scale=(640, 640),
+                flip=False,
+                transforms=[
+                    dict(type='Resize', keep_ratio=True),
+                    dict(type='RandomFlip'),
+                    dict(
+                        type='Pad',
+                        pad_to_square=True,
+                        pad_val=dict(img=(114.0, 114.0, 114.0))),
+                    dict(type='DefaultFormatBundle'),
+                    dict(type='Collect', keys=['img'])
+                ])
+        ]))
+max_epochs = 300
+num_last_epochs = 15
+interval = 10
+evaluation = dict(
+    save_best='auto', interval=10, dynamic_intervals=[(285, 1)], metric='bbox')
+work_dir = 'center_out'
+auto_resume = False
+gpu_ids = [2]
+
+2022-02-13 08:21:59,299 - mmdet - INFO - Set random seed to 62519529, deterministic: False
+2022-02-13 08:21:59,518 - mmdet - INFO - initialize CSPDarknet with init_cfg {'type': 'Kaiming', 'layer': 'Conv2d', 'a': 2.23606797749979, 'distribution': 'uniform', 'mode': 'fan_in', 'nonlinearity': 'leaky_relu'}
+load checkpoint
+tools/cls_center.py:52: UserWarning: This overload of addmm_ is deprecated:
+	addmm_(Number beta, Number alpha, Tensor mat1, Tensor mat2)
+Consider using one of the following signatures instead:
+	addmm_(Tensor mat1, Tensor mat2, *, Number beta, Number alpha) (Triggered internally at  /pytorch/torch/csrc/utils/python_arg_parser.cpp:882.)
+  distmat.addmm_(1, -2, x, self.centers.t())
+Sun Feb 13 08:22:11 2022, Epoch: 1, loss: 4.9577
+Sun Feb 13 08:22:18 2022, Epoch: 1, loss: 2.8076
+Sun Feb 13 08:22:23 2022, Epoch: 1, loss: 2.0804
+Sun Feb 13 08:22:29 2022, Epoch: 2, loss: 0.5832
+Sun Feb 13 08:22:35 2022, Epoch: 2, loss: 0.5637
+Sun Feb 13 08:22:41 2022, Epoch: 2, loss: 0.5510
+Sun Feb 13 08:22:46 2022, Epoch: 3, loss: 0.4873
+Sun Feb 13 08:22:52 2022, Epoch: 3, loss: 0.4880
+Sun Feb 13 08:22:57 2022, Epoch: 3, loss: 0.4747
+Sun Feb 13 08:23:02 2022, Epoch: 4, loss: 0.4161
+Sun Feb 13 08:23:08 2022, Epoch: 4, loss: 0.4044
+Sun Feb 13 08:23:13 2022, Epoch: 4, loss: 0.4372
+Sun Feb 13 08:23:19 2022, Epoch: 5, loss: 0.4346
+Sun Feb 13 08:23:25 2022, Epoch: 5, loss: 0.4312
+Sun Feb 13 08:23:30 2022, Epoch: 5, loss: 0.4413
+Sun Feb 13 08:23:36 2022, Epoch: 6, loss: 0.4182
+Sun Feb 13 08:23:41 2022, Epoch: 6, loss: 0.4179
+Sun Feb 13 08:23:46 2022, Epoch: 6, loss: 0.4143
+Sun Feb 13 08:23:52 2022, Epoch: 7, loss: 0.3851
+Sun Feb 13 08:23:58 2022, Epoch: 7, loss: 0.3866
+Sun Feb 13 08:24:02 2022, Epoch: 7, loss: 0.3816
+Sun Feb 13 08:24:08 2022, Epoch: 8, loss: 0.3462
+Sun Feb 13 08:24:13 2022, Epoch: 8, loss: 0.3291
+Sun Feb 13 08:24:18 2022, Epoch: 8, loss: 0.3546
+Sun Feb 13 08:24:25 2022, Epoch: 9, loss: 0.3584
+Sun Feb 13 08:24:31 2022, Epoch: 9, loss: 0.3939
+Sun Feb 13 08:24:35 2022, Epoch: 9, loss: 0.3994
+Epoch: 9, Acc: 0.9667
+Save Model
+Sun Feb 13 08:24:44 2022, Epoch: 10, loss: 0.3387
+Sun Feb 13 08:24:49 2022, Epoch: 10, loss: 0.3472
+Sun Feb 13 08:24:54 2022, Epoch: 10, loss: 0.3633
+Sun Feb 13 08:24:59 2022, Epoch: 11, loss: 0.3350
+Sun Feb 13 08:25:04 2022, Epoch: 11, loss: 0.3414
+Sun Feb 13 08:25:09 2022, Epoch: 11, loss: 0.3737
+Sun Feb 13 08:25:14 2022, Epoch: 12, loss: 0.3940
+Sun Feb 13 08:25:20 2022, Epoch: 12, loss: 0.3873
+Sun Feb 13 08:25:24 2022, Epoch: 12, loss: 0.3747
+Sun Feb 13 08:25:29 2022, Epoch: 13, loss: 0.3406
+Sun Feb 13 08:25:35 2022, Epoch: 13, loss: 0.3478
+Sun Feb 13 08:25:39 2022, Epoch: 13, loss: 0.3368
+Sun Feb 13 08:25:45 2022, Epoch: 14, loss: 0.3021
+Sun Feb 13 08:25:50 2022, Epoch: 14, loss: 0.3031
+Sun Feb 13 08:25:55 2022, Epoch: 14, loss: 0.3193
+Sun Feb 13 08:26:00 2022, Epoch: 15, loss: 0.2930
+Sun Feb 13 08:26:05 2022, Epoch: 15, loss: 0.2905
+Sun Feb 13 08:26:10 2022, Epoch: 15, loss: 0.3048
+Sun Feb 13 08:26:16 2022, Epoch: 16, loss: 0.3373
+Sun Feb 13 08:26:21 2022, Epoch: 16, loss: 0.3067
+Sun Feb 13 08:26:26 2022, Epoch: 16, loss: 0.2892
+Sun Feb 13 08:26:31 2022, Epoch: 17, loss: 0.2389
+Sun Feb 13 08:26:37 2022, Epoch: 17, loss: 0.3009
+Sun Feb 13 08:26:42 2022, Epoch: 17, loss: 0.3090
+Sun Feb 13 08:26:48 2022, Epoch: 18, loss: 0.3889
+Sun Feb 13 08:26:54 2022, Epoch: 18, loss: 0.3734
+Sun Feb 13 08:26:58 2022, Epoch: 18, loss: 0.3689
+Sun Feb 13 08:27:04 2022, Epoch: 19, loss: 0.3745
+Sun Feb 13 08:27:10 2022, Epoch: 19, loss: 0.3457
+Sun Feb 13 08:27:14 2022, Epoch: 19, loss: 0.3358
+Epoch: 19, Acc: 0.9379
+Sun Feb 13 08:27:22 2022, Epoch: 20, loss: 0.3084
+Sun Feb 13 08:27:27 2022, Epoch: 20, loss: 0.3335
+Sun Feb 13 08:27:32 2022, Epoch: 20, loss: 0.3191
+Sun Feb 13 08:27:37 2022, Epoch: 21, loss: 0.3200
+Sun Feb 13 08:27:43 2022, Epoch: 21, loss: 0.2916
+Sun Feb 13 08:27:47 2022, Epoch: 21, loss: 0.3020
+Sun Feb 13 08:27:54 2022, Epoch: 22, loss: 0.3268
+Sun Feb 13 08:28:00 2022, Epoch: 22, loss: 0.3356
+Sun Feb 13 08:28:04 2022, Epoch: 22, loss: 0.3649
+Sun Feb 13 08:28:10 2022, Epoch: 23, loss: 0.3805
+Sun Feb 13 08:28:16 2022, Epoch: 23, loss: 0.3515
+Sun Feb 13 08:28:20 2022, Epoch: 23, loss: 0.3320
+Sun Feb 13 08:28:26 2022, Epoch: 24, loss: 0.2491
+Sun Feb 13 08:28:32 2022, Epoch: 24, loss: 0.2864
+Sun Feb 13 08:28:37 2022, Epoch: 24, loss: 0.2864
+Sun Feb 13 08:28:42 2022, Epoch: 25, loss: 0.2745
+Sun Feb 13 08:28:48 2022, Epoch: 25, loss: 0.2725
+Sun Feb 13 08:28:53 2022, Epoch: 25, loss: 0.3197
+Sun Feb 13 08:28:58 2022, Epoch: 26, loss: 0.4068
+Sun Feb 13 08:29:04 2022, Epoch: 26, loss: 0.3826
+Sun Feb 13 08:29:09 2022, Epoch: 26, loss: 0.4033
+Sun Feb 13 08:29:14 2022, Epoch: 27, loss: 0.3709
+Sun Feb 13 08:29:21 2022, Epoch: 27, loss: 0.3727
+Sun Feb 13 08:29:25 2022, Epoch: 27, loss: 0.3890
+Sun Feb 13 08:29:31 2022, Epoch: 28, loss: 0.5381
+Sun Feb 13 08:29:37 2022, Epoch: 28, loss: 0.5165
+Sun Feb 13 08:29:41 2022, Epoch: 28, loss: 0.5250
+Sun Feb 13 08:29:47 2022, Epoch: 29, loss: 0.5510
+Sun Feb 13 08:29:52 2022, Epoch: 29, loss: 0.5152
+Sun Feb 13 08:29:57 2022, Epoch: 29, loss: 0.5148
+Epoch: 29, Acc: 0.8958
+Sun Feb 13 08:30:05 2022, Epoch: 30, loss: 0.4702
+Sun Feb 13 08:30:11 2022, Epoch: 30, loss: 0.4653
+Sun Feb 13 08:30:16 2022, Epoch: 30, loss: 0.4468
+Sun Feb 13 08:30:21 2022, Epoch: 31, loss: 0.4005
+Sun Feb 13 08:30:27 2022, Epoch: 31, loss: 0.4114
+Sun Feb 13 08:30:31 2022, Epoch: 31, loss: 0.3945
+Sun Feb 13 08:30:37 2022, Epoch: 32, loss: 0.3740
+Sun Feb 13 08:30:42 2022, Epoch: 32, loss: 0.3610
+Sun Feb 13 08:30:47 2022, Epoch: 32, loss: 0.3817
+Sun Feb 13 08:30:52 2022, Epoch: 33, loss: 0.3849
+Sun Feb 13 08:30:58 2022, Epoch: 33, loss: 0.3846
+Sun Feb 13 08:31:02 2022, Epoch: 33, loss: 0.3678
+Sun Feb 13 08:31:07 2022, Epoch: 34, loss: 0.3577
+Sun Feb 13 08:31:13 2022, Epoch: 34, loss: 0.3676
+Sun Feb 13 08:31:17 2022, Epoch: 34, loss: 0.3643
+Sun Feb 13 08:31:23 2022, Epoch: 35, loss: 0.3265
+Sun Feb 13 08:31:28 2022, Epoch: 35, loss: 0.3643
+Sun Feb 13 08:31:32 2022, Epoch: 35, loss: 0.3593
+Sun Feb 13 08:31:38 2022, Epoch: 36, loss: 0.3789
+Sun Feb 13 08:31:43 2022, Epoch: 36, loss: 0.3381
+Sun Feb 13 08:31:48 2022, Epoch: 36, loss: 0.3160
+Sun Feb 13 08:31:54 2022, Epoch: 37, loss: 0.2847
+Sun Feb 13 08:32:00 2022, Epoch: 37, loss: 0.2883
+Sun Feb 13 08:32:04 2022, Epoch: 37, loss: 0.3152
+Sun Feb 13 08:32:10 2022, Epoch: 38, loss: 0.3544
+Sun Feb 13 08:32:15 2022, Epoch: 38, loss: 0.3835
+Sun Feb 13 08:32:19 2022, Epoch: 38, loss: 0.3775
+Sun Feb 13 08:32:25 2022, Epoch: 39, loss: 0.3428
+Sun Feb 13 08:32:30 2022, Epoch: 39, loss: 0.3432
+Sun Feb 13 08:32:35 2022, Epoch: 39, loss: 0.3569
+Epoch: 39, Acc: 0.9512
+Sun Feb 13 08:32:43 2022, Epoch: 40, loss: 0.3798
+Sun Feb 13 08:32:48 2022, Epoch: 40, loss: 0.4286
+Sun Feb 13 08:32:52 2022, Epoch: 40, loss: 0.4677
+Sun Feb 13 08:32:58 2022, Epoch: 41, loss: 0.4158
+Sun Feb 13 08:33:04 2022, Epoch: 41, loss: 0.3801
+Sun Feb 13 08:33:08 2022, Epoch: 41, loss: 0.3942
+Sun Feb 13 08:33:14 2022, Epoch: 42, loss: 0.3332
+Sun Feb 13 08:33:20 2022, Epoch: 42, loss: 0.3518
+Sun Feb 13 08:33:24 2022, Epoch: 42, loss: 0.3407
+Sun Feb 13 08:33:30 2022, Epoch: 43, loss: 0.3285
+Sun Feb 13 08:33:36 2022, Epoch: 43, loss: 0.3207
+Sun Feb 13 08:33:40 2022, Epoch: 43, loss: 0.3068
+Sun Feb 13 08:33:46 2022, Epoch: 44, loss: 0.3690
+Sun Feb 13 08:33:52 2022, Epoch: 44, loss: 0.3532
+Sun Feb 13 08:33:56 2022, Epoch: 44, loss: 0.3388
+Sun Feb 13 08:34:02 2022, Epoch: 45, loss: 0.3800
+Sun Feb 13 08:34:08 2022, Epoch: 45, loss: 0.3328
+Sun Feb 13 08:34:13 2022, Epoch: 45, loss: 0.3372
+Sun Feb 13 08:34:18 2022, Epoch: 46, loss: 0.3277
+Sun Feb 13 08:34:23 2022, Epoch: 46, loss: 0.3108
+Sun Feb 13 08:34:28 2022, Epoch: 46, loss: 0.3419
+Sun Feb 13 08:34:33 2022, Epoch: 47, loss: 0.2854
+Sun Feb 13 08:34:39 2022, Epoch: 47, loss: 0.2770
+Sun Feb 13 08:34:43 2022, Epoch: 47, loss: 0.2606
+Sun Feb 13 08:34:49 2022, Epoch: 48, loss: 0.2819
+Sun Feb 13 08:34:54 2022, Epoch: 48, loss: 0.2377
+Sun Feb 13 08:34:59 2022, Epoch: 48, loss: 0.2215
+Sun Feb 13 08:35:04 2022, Epoch: 49, loss: 0.2233
+Sun Feb 13 08:35:10 2022, Epoch: 49, loss: 0.2136
+Sun Feb 13 08:35:16 2022, Epoch: 49, loss: 0.2295
+Epoch: 49, Acc: 0.9468
+Sun Feb 13 08:35:25 2022, Epoch: 50, loss: 0.2766
+Sun Feb 13 08:35:30 2022, Epoch: 50, loss: 0.3016
+Sun Feb 13 08:35:35 2022, Epoch: 50, loss: 0.3050
+Sun Feb 13 08:35:41 2022, Epoch: 51, loss: 0.3127
+Sun Feb 13 08:35:46 2022, Epoch: 51, loss: 0.3126
+Sun Feb 13 08:35:51 2022, Epoch: 51, loss: 0.3070
+Sun Feb 13 08:35:57 2022, Epoch: 52, loss: 0.2772
+Sun Feb 13 08:36:02 2022, Epoch: 52, loss: 0.2737
+Sun Feb 13 08:36:07 2022, Epoch: 52, loss: 0.2588
+Sun Feb 13 08:36:12 2022, Epoch: 53, loss: 0.2231
+Sun Feb 13 08:36:17 2022, Epoch: 53, loss: 0.2466
+Sun Feb 13 08:36:22 2022, Epoch: 53, loss: 0.2255
+Sun Feb 13 08:36:27 2022, Epoch: 54, loss: 0.2189
+Sun Feb 13 08:36:34 2022, Epoch: 54, loss: 0.2079
+Sun Feb 13 08:36:39 2022, Epoch: 54, loss: 0.2158
+Sun Feb 13 08:36:44 2022, Epoch: 55, loss: 0.2612
+Sun Feb 13 08:36:50 2022, Epoch: 55, loss: 0.3358
+Sun Feb 13 08:36:54 2022, Epoch: 55, loss: 0.3217
+Sun Feb 13 08:36:59 2022, Epoch: 56, loss: 0.3113
+Sun Feb 13 08:37:05 2022, Epoch: 56, loss: 0.3117
+Sun Feb 13 08:37:09 2022, Epoch: 56, loss: 0.2768
+Sun Feb 13 08:37:15 2022, Epoch: 57, loss: 0.2150
+Sun Feb 13 08:37:22 2022, Epoch: 57, loss: 0.2370
+Sun Feb 13 08:37:27 2022, Epoch: 57, loss: 0.2345
+Sun Feb 13 08:37:33 2022, Epoch: 58, loss: 0.1963
+Sun Feb 13 08:37:38 2022, Epoch: 58, loss: 0.1908
+Sun Feb 13 08:37:43 2022, Epoch: 58, loss: 0.2074
+Sun Feb 13 08:37:49 2022, Epoch: 59, loss: 0.2167
+Sun Feb 13 08:37:54 2022, Epoch: 59, loss: 0.2036
+Sun Feb 13 08:37:59 2022, Epoch: 59, loss: 0.2116
+Epoch: 59, Acc: 0.9246
+Sun Feb 13 08:38:08 2022, Epoch: 60, loss: 0.2918
+Sun Feb 13 08:38:14 2022, Epoch: 60, loss: 0.2319
+Sun Feb 13 08:38:19 2022, Epoch: 60, loss: 0.2237
+Sun Feb 13 08:38:24 2022, Epoch: 61, loss: 0.1858
+Sun Feb 13 08:38:29 2022, Epoch: 61, loss: 0.1790
+Sun Feb 13 08:38:33 2022, Epoch: 61, loss: 0.1887
+Sun Feb 13 08:38:39 2022, Epoch: 62, loss: 0.1538
+Sun Feb 13 08:38:44 2022, Epoch: 62, loss: 0.1640
+Sun Feb 13 08:38:48 2022, Epoch: 62, loss: 0.2261
+Sun Feb 13 08:38:54 2022, Epoch: 63, loss: 0.2330
+Sun Feb 13 08:38:59 2022, Epoch: 63, loss: 0.2471
+Sun Feb 13 08:39:03 2022, Epoch: 63, loss: 0.2338
+Sun Feb 13 08:39:08 2022, Epoch: 64, loss: 0.1880
+Sun Feb 13 08:39:13 2022, Epoch: 64, loss: 0.2260
+Sun Feb 13 08:39:17 2022, Epoch: 64, loss: 0.2335
+Sun Feb 13 08:39:22 2022, Epoch: 65, loss: 0.2384
+Sun Feb 13 08:39:29 2022, Epoch: 65, loss: 0.2405
+Sun Feb 13 08:39:34 2022, Epoch: 65, loss: 0.2741
+Sun Feb 13 08:39:39 2022, Epoch: 66, loss: 0.3199
+Sun Feb 13 08:39:45 2022, Epoch: 66, loss: 0.3216
+Sun Feb 13 08:39:49 2022, Epoch: 66, loss: 0.3178
+Sun Feb 13 08:39:55 2022, Epoch: 67, loss: 0.3163
+Sun Feb 13 08:40:00 2022, Epoch: 67, loss: 0.2812
+Sun Feb 13 08:40:05 2022, Epoch: 67, loss: 0.3088
+Sun Feb 13 08:40:10 2022, Epoch: 68, loss: 0.2621
+Sun Feb 13 08:40:15 2022, Epoch: 68, loss: 0.2618
+Sun Feb 13 08:40:20 2022, Epoch: 68, loss: 0.2628
+Sun Feb 13 08:40:25 2022, Epoch: 69, loss: 0.1933
+Sun Feb 13 08:40:31 2022, Epoch: 69, loss: 0.1952
+Sun Feb 13 08:40:36 2022, Epoch: 69, loss: 0.2114
+Epoch: 69, Acc: 0.9379
+Sun Feb 13 08:40:46 2022, Epoch: 70, loss: 0.2725
+Sun Feb 13 08:40:52 2022, Epoch: 70, loss: 0.2730
+Sun Feb 13 08:40:57 2022, Epoch: 70, loss: 0.3049
+Sun Feb 13 08:41:02 2022, Epoch: 71, loss: 0.3089
+Sun Feb 13 08:41:08 2022, Epoch: 71, loss: 0.2855
+Sun Feb 13 08:41:13 2022, Epoch: 71, loss: 0.2895
+Sun Feb 13 08:41:18 2022, Epoch: 72, loss: 0.2710
+Sun Feb 13 08:41:24 2022, Epoch: 72, loss: 0.2778
+Sun Feb 13 08:41:28 2022, Epoch: 72, loss: 0.2742
+Sun Feb 13 08:41:33 2022, Epoch: 73, loss: 0.2241
+Sun Feb 13 08:41:39 2022, Epoch: 73, loss: 0.2389
+Sun Feb 13 08:41:43 2022, Epoch: 73, loss: 0.2124
+Sun Feb 13 08:41:48 2022, Epoch: 74, loss: 0.1724
+Sun Feb 13 08:41:54 2022, Epoch: 74, loss: 0.1517
+Sun Feb 13 08:41:58 2022, Epoch: 74, loss: 0.1565
+Sun Feb 13 08:42:04 2022, Epoch: 75, loss: 0.1529
+Sun Feb 13 08:42:09 2022, Epoch: 75, loss: 0.1627
+Sun Feb 13 08:42:13 2022, Epoch: 75, loss: 0.1499
+Sun Feb 13 08:42:19 2022, Epoch: 76, loss: 0.1002
+Sun Feb 13 08:42:24 2022, Epoch: 76, loss: 0.1110
+Sun Feb 13 08:42:28 2022, Epoch: 76, loss: 0.1215
+Sun Feb 13 08:42:33 2022, Epoch: 77, loss: 0.3445
+Sun Feb 13 08:42:39 2022, Epoch: 77, loss: 0.3999
+Sun Feb 13 08:42:43 2022, Epoch: 77, loss: 0.4177
+Sun Feb 13 08:42:49 2022, Epoch: 78, loss: 0.5206
+Sun Feb 13 08:42:55 2022, Epoch: 78, loss: 0.4664
+Sun Feb 13 08:42:59 2022, Epoch: 78, loss: 0.4594
+Sun Feb 13 08:43:05 2022, Epoch: 79, loss: 0.3617
+Sun Feb 13 08:43:11 2022, Epoch: 79, loss: 0.3386
+Sun Feb 13 08:43:15 2022, Epoch: 79, loss: 0.3910
+Epoch: 79, Acc: 0.9512
+Sun Feb 13 08:43:23 2022, Epoch: 80, loss: 0.3312
+Sun Feb 13 08:43:28 2022, Epoch: 80, loss: 0.3306
+Sun Feb 13 08:43:32 2022, Epoch: 80, loss: 0.3177
+Sun Feb 13 08:43:38 2022, Epoch: 81, loss: 0.2999
+Sun Feb 13 08:43:43 2022, Epoch: 81, loss: 0.3044
+Sun Feb 13 08:43:47 2022, Epoch: 81, loss: 0.2800
+Sun Feb 13 08:43:53 2022, Epoch: 82, loss: 0.2706
+Sun Feb 13 08:43:59 2022, Epoch: 82, loss: 0.3014
+Sun Feb 13 08:44:03 2022, Epoch: 82, loss: 0.2953
+Sun Feb 13 08:44:09 2022, Epoch: 83, loss: 0.2365
+Sun Feb 13 08:44:15 2022, Epoch: 83, loss: 0.2286
+Sun Feb 13 08:44:20 2022, Epoch: 83, loss: 0.2259
+Sun Feb 13 08:44:26 2022, Epoch: 84, loss: 0.2146
+Sun Feb 13 08:44:31 2022, Epoch: 84, loss: 0.1858
+Sun Feb 13 08:44:36 2022, Epoch: 84, loss: 0.1776
+Sun Feb 13 08:44:42 2022, Epoch: 85, loss: 0.1561
+Sun Feb 13 08:44:47 2022, Epoch: 85, loss: 0.1571
+Sun Feb 13 08:44:51 2022, Epoch: 85, loss: 0.1628
+Sun Feb 13 08:44:57 2022, Epoch: 86, loss: 0.1675
+Sun Feb 13 08:45:03 2022, Epoch: 86, loss: 0.1596
+Sun Feb 13 08:45:07 2022, Epoch: 86, loss: 0.1500
+Sun Feb 13 08:45:13 2022, Epoch: 87, loss: 0.1347
+Sun Feb 13 08:45:18 2022, Epoch: 87, loss: 0.1326
+Sun Feb 13 08:45:24 2022, Epoch: 87, loss: 0.2002
+Sun Feb 13 08:45:30 2022, Epoch: 88, loss: 0.4587
+Sun Feb 13 08:45:37 2022, Epoch: 88, loss: 0.5092
+Sun Feb 13 08:45:43 2022, Epoch: 88, loss: 0.4906
+Sun Feb 13 08:45:49 2022, Epoch: 89, loss: 0.4076
+Sun Feb 13 08:45:54 2022, Epoch: 89, loss: 0.3784
+Sun Feb 13 08:45:59 2022, Epoch: 89, loss: 0.3721
+Epoch: 89, Acc: 0.8581
+Sun Feb 13 08:46:07 2022, Epoch: 90, loss: 0.3430
+Sun Feb 13 08:46:14 2022, Epoch: 90, loss: 0.3236
+Sun Feb 13 08:46:19 2022, Epoch: 90, loss: 0.3126
+Sun Feb 13 08:46:25 2022, Epoch: 91, loss: 0.2353
+Sun Feb 13 08:46:30 2022, Epoch: 91, loss: 0.2457
+Sun Feb 13 08:46:35 2022, Epoch: 91, loss: 0.2328
+Sun Feb 13 08:46:40 2022, Epoch: 92, loss: 0.1904
+Sun Feb 13 08:46:46 2022, Epoch: 92, loss: 0.1937
+Sun Feb 13 08:46:51 2022, Epoch: 92, loss: 0.1757
+Sun Feb 13 08:46:56 2022, Epoch: 93, loss: 0.1654
+Sun Feb 13 08:47:03 2022, Epoch: 93, loss: 0.1758
+Sun Feb 13 08:47:08 2022, Epoch: 93, loss: 0.1723
+Sun Feb 13 08:47:13 2022, Epoch: 94, loss: 0.1591
+Sun Feb 13 08:47:19 2022, Epoch: 94, loss: 0.1429
+Sun Feb 13 08:47:24 2022, Epoch: 94, loss: 0.1493
+Sun Feb 13 08:47:29 2022, Epoch: 95, loss: 0.1452
+Sun Feb 13 08:47:35 2022, Epoch: 95, loss: 0.1411
+Sun Feb 13 08:47:40 2022, Epoch: 95, loss: 0.1428
+Sun Feb 13 08:47:45 2022, Epoch: 96, loss: 0.2192
+Sun Feb 13 08:47:51 2022, Epoch: 96, loss: 0.1771
+Sun Feb 13 08:47:57 2022, Epoch: 96, loss: 0.1715
+Sun Feb 13 08:48:02 2022, Epoch: 97, loss: 0.1554
+Sun Feb 13 08:48:07 2022, Epoch: 97, loss: 0.1632
+Sun Feb 13 08:48:12 2022, Epoch: 97, loss: 0.1682
+Sun Feb 13 08:48:18 2022, Epoch: 98, loss: 0.1772
+Sun Feb 13 08:48:23 2022, Epoch: 98, loss: 0.1504
+Sun Feb 13 08:48:28 2022, Epoch: 98, loss: 0.1442
+Sun Feb 13 08:48:33 2022, Epoch: 99, loss: 0.1224
+Sun Feb 13 08:48:39 2022, Epoch: 99, loss: 0.1438
+Sun Feb 13 08:48:44 2022, Epoch: 99, loss: 0.1742
+Epoch: 99, Acc: 0.9601
+Sun Feb 13 08:48:53 2022, Epoch: 100, loss: 0.2394
+Sun Feb 13 08:48:59 2022, Epoch: 100, loss: 0.3690
+Sun Feb 13 08:49:03 2022, Epoch: 100, loss: 0.3748
