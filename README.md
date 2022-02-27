@@ -1,10 +1,12 @@
+[简体中文](https://github.com/muyuuuu/Flow-Detection/blob/main/README-zh.md)
+
 # YOLOX-S Object Detection
 
 The dataset is the [FloW](http://www.orca-tech.cn/datasets/FloW/FloW-Img) dataset from Ouka, using `mmdetection` as a tool.
 
 <p align="center">
-    <img src=". /sample/1.jpg" width="400">
-    <img src=". /sample/res.gif" width="400">
+    <img src="./sample/1.jpg" width="400">
+    <img src="./sample/res.gif" width="400">
 </p>
 
 - `coco-tools` below is the markup from `VOC` format to `json` format
