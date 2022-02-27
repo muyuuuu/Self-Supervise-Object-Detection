@@ -23,32 +23,71 @@ from mmdet.models import build_backbone
 from mmdet.utils import collect_env, get_root_logger
 
 
+class CenterLoss(nn.Module):
+    """Center loss.
+    
+    Reference:
+    Wen et al. A Discriminative Feature Learning Approach for Deep Face Recognition. ECCV 2016.
+    
+    Args:
+        num_classes (int): number of classes.
+        feat_dim (int): feature dimension.
+    """
+
+    def __init__(self, num_classes=2, feat_dim=2, use_gpu=True):
+        super(CenterLoss, self).__init__()
+        self.num_classes = num_classes
+        self.feat_dim = feat_dim
+        self.use_gpu = use_gpu
+        self.centers = torch.nn.Parameter(
+            torch.randn(self.num_classes, self.feat_dim).cuda())
+
+    def forward(self, x, labels):
+        """
+        Args:
+            x: feature matrix with shape (batch_size, feat_dim).
+            labels: ground truth labels with shape (batch_size).
+        """
+        batch_size = x.size(0)
+        distmat = torch.pow(x, 2).sum(dim=1, keepdim=True).expand(batch_size, self.num_classes) + \
+                  torch.pow(self.centers, 2).sum(dim=1, keepdim=True).expand(self.num_classes, batch_size).t()
+        distmat.addmm_(1, -2, x, self.centers.t())
+
+        classes = torch.arange(self.num_classes).long()
+        if self.use_gpu:
+            classes = classes.cuda()
+        labels = labels.unsqueeze(1).expand(batch_size, self.num_classes)
+        mask = labels.eq(classes.expand(batch_size, self.num_classes))
+
+        dist = distmat * mask.float()
+        loss = dist.clamp(min=1e-12, max=1e+12).sum() / batch_size
+
+        return loss
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a detector')
     parser.add_argument('config', help='train config file path')
     parser.add_argument('--work-dir', help='the dir to save logs and models')
-    parser.add_argument(
-        '--resume-from', help='the checkpoint file to resume from')
-    parser.add_argument(
-        '--auto-resume',
-        action='store_true',
-        help='resume from the latest checkpoint automatically')
+    parser.add_argument('--resume-from',
+                        help='the checkpoint file to resume from')
+    parser.add_argument('--auto-resume',
+                        action='store_true',
+                        help='resume from the latest checkpoint automatically')
     parser.add_argument(
         '--no-validate',
         action='store_true',
         help='whether not to evaluate the checkpoint during training')
     group_gpus = parser.add_mutually_exclusive_group()
-    group_gpus.add_argument(
-        '--gpus',
-        type=int,
-        help='number of gpus to use '
-        '(only applicable to non-distributed training)')
-    group_gpus.add_argument(
-        '--gpu-ids',
-        type=int,
-        nargs='+',
-        help='ids of gpus to use '
-        '(only applicable to non-distributed training)')
+    group_gpus.add_argument('--gpus',
+                            type=int,
+                            help='number of gpus to use '
+                            '(only applicable to non-distributed training)')
+    group_gpus.add_argument('--gpu-ids',
+                            type=int,
+                            nargs='+',
+                            help='ids of gpus to use '
+                            '(only applicable to non-distributed training)')
     parser.add_argument('--seed', type=int, default=None, help='random seed')
     parser.add_argument(
         '--deterministic',
@@ -71,11 +110,10 @@ def parse_args():
         'It also allows nested list/tuple values, e.g. key="[(a,b),(c,d)]" '
         'Note that the quotation marks are necessary and that no white space '
         'is allowed.')
-    parser.add_argument(
-        '--launcher',
-        choices=['none', 'pytorch', 'slurm', 'mpi'],
-        default='none',
-        help='job launcher')
+    parser.add_argument('--launcher',
+                        choices=['none', 'pytorch', 'slurm', 'mpi'],
+                        default='none',
+                        help='job launcher')
     parser.add_argument('--local_rank', type=int, default=0)
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
@@ -150,8 +188,7 @@ def get_model():
     env_info_dict = collect_env()
     env_info = '\n'.join([(f'{k}: {v}') for k, v in env_info_dict.items()])
     dash_line = '-' * 60 + '\n'
-    logger.info('Environment info:\n' + dash_line + env_info + '\n' +
-                dash_line)
+    logger.info('Environment info:\n' + dash_line + env_info + '\n' + dash_line)
     meta['env_info'] = env_info
     meta['config'] = cfg.pretty_text
     # log some basic info
@@ -174,18 +211,34 @@ def get_model():
 
 
 class mymodel(torch.nn.Module):
+
     def __init__(self):
         super(mymodel, self).__init__()
         self.backbone = get_model()
         self.pool = torch.nn.AvgPool2d(kernel_size=2)
         self.conv = torch.nn.Sequential(
-            torch.nn.Conv2d(512, 128, kernel_size=3, stride=1, padding=1, bias=False),
+            torch.nn.Conv2d(512,
+                            128,
+                            kernel_size=3,
+                            stride=1,
+                            padding=1,
+                            bias=False),
             torch.nn.BatchNorm2d(128),
             torch.nn.ReLU(),
-            torch.nn.Conv2d(128, 128, kernel_size=3, stride=1, padding=1, bias=False),
+            torch.nn.Conv2d(128,
+                            128,
+                            kernel_size=3,
+                            stride=1,
+                            padding=1,
+                            bias=False),
             torch.nn.BatchNorm2d(128),
             torch.nn.ReLU(),
-            torch.nn.Conv2d(128, 32, kernel_size=3, stride=1, padding=1, bias=False),
+            torch.nn.Conv2d(128,
+                            32,
+                            kernel_size=3,
+                            stride=1,
+                            padding=1,
+                            bias=False),
             torch.nn.BatchNorm2d(32),
             torch.nn.ReLU(),
         )
@@ -201,6 +254,7 @@ class mymodel(torch.nn.Module):
 
 
 class DATA(Dataset):
+
     def __init__(self, root):
         self.root = root
         self.imgs = []
@@ -208,15 +262,13 @@ class DATA(Dataset):
 
         self.create_data()
 
-        self.trainform = transforms.Compose(
-            [
-                lambda x: Image.open(x).convert("RGB"),  # open image
-                transforms.Resize(224),
-                transforms.RandomHorizontalFlip(),  # with 0.5 probability
-                transforms.ToTensor(),  # Converts a PIL Image to [0, 1]
-                transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
-            ]
-        )
+        self.trainform = transforms.Compose([
+            lambda x: Image.open(x).convert("RGB"),  # open image
+            transforms.Resize(224),
+            transforms.RandomHorizontalFlip(),  # with 0.5 probability
+            transforms.ToTensor(),  # Converts a PIL Image to [0, 1]
+            transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)),
+        ])
 
     def create_data(self):
         for file in os.listdir(self.root):
@@ -241,17 +293,22 @@ if __name__ == "__main__":
     train_length = int(length * 0.8)
     val_length = int(length * 0.2)
     train_set, val_set = torch.utils.data.random_split(
-        data, [train_length, val_length]
-    )
+        data, [train_length, val_length])
 
     train_loader = DataLoader(train_set, batch_size=128, shuffle=True)
     val_loader = DataLoader(val_set, batch_size=128, shuffle=True)
 
-    criterion = torch.nn.CrossEntropyLoss().cuda()
-    optimizer = torch.optim.Adam(
-        [{"params": model.parameters()}], lr=1e-3, weight_decay=5e-4
-    )
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, 10, 2)
+    criterion = torch.nn.CrossEntropyLoss()
+    center_loss = CenterLoss(num_classes=2, feat_dim=2, use_gpu=True)
+    optimizer_centloss = torch.optim.SGD(center_loss.parameters(), lr=.5)
+
+    optimizer = torch.optim.Adam([{
+        "params": model.parameters()
+    }],
+                                 lr=1e-3,
+                                 weight_decay=5e-4)
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
+        optimizer, 10, 2)
 
     model_pth = "backbone.pth"
     if os.path.isfile(model_pth):
@@ -274,17 +331,22 @@ if __name__ == "__main__":
             y = y.cuda()
 
             y_pred = model(x)
-            loss = criterion(y_pred, y)
+            loss = center_loss(y_pred, y) + criterion(y_pred, y)
             all_loss.append(loss)
 
             optimizer.zero_grad()
+            optimizer_centloss.zero_grad()
+
             loss.backward()
             optimizer.step()
+
+            optimizer_centloss.step()
 
             if idx % 5 == 4:
                 time_str = time.asctime(time.localtime(time.time()))
                 avg_loss = sum(all_loss) / len(all_loss)
-                print("{}, Epoch: {}, loss: {:.4f}".format(time_str, start_epoch, avg_loss))
+                print("{}, Epoch: {}, loss: {:.4f}".format(
+                    time_str, start_epoch, avg_loss))
 
         if start_epoch % 10 == 9:
             model.eval()
