@@ -45,8 +45,8 @@ In the real world not all data is labeled. So how to make good use of unlabeled 
 In summary, is there a simple self-supervised training method that can be used for target detection in specific scenarios? Inspired by self-EMD, I have done the following simple work.
 
 <p align="center">
-    <img src="./sample/ssl.png" width="600">
-</p
+    <img src="./sample/ssl.jpg" width="600">
+</p>
 
 - Cut out several patches in the image, with blue in the middle as anchor, pink as positive samples, and purple as negative samples
 - Using cosine distance as the loss function, the representation of anchor and positive samples should be close to each other, and the representation of anchor and negative samples should be far from each other

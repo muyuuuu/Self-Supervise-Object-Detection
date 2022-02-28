@@ -41,7 +41,7 @@
 综上，有没有一种简单的自监督训练方法用到特定场景下的目标检测领呢？受到 self-EMD 的启发，我做了如下简单的工作：
 
 <p align="center">
-    <img src="./sample/ssl.png" width="600">
+    <img src="./sample/ssl.jpg" width="600">
 </p>
 
 - 在图片中切出几个 patch，中间的蓝色视为 anchor，粉红色为正样本，紫色为负样本
