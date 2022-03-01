@@ -2,7 +2,7 @@
 nohup python tools/train.py configs/yolox/yolox_flow.py --gpu-ids 2 --work-dir flow_out > out.log 2>&1 &
 ```
 
-# yolox-s
+## yolox-s-baseline
 
 best mAP without any strategy：
 
@@ -20,6 +20,8 @@ best mAP without any strategy：
  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.536
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.578
 ```
+
+## yolox-s, use center loss to pretrain backbone
 
 best mAP with adjust backbone by crossentropy:
 
@@ -55,6 +57,8 @@ best mAP with center loss to pretrain backbone:
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.587
 ```
 
+## yolox-s, ciou to fix SimOTA vulnerability
+
 best mAP with CIoU loss:
 
 ```
@@ -89,7 +93,24 @@ best mAP with CIoU loss and center loss to pretrain backbone:
  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.617
 ```
 
-# yolox-tiny
+## yolox-s, training on unlabeled data by self supervised training
+
+```log
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.383
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.819
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.303
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.247
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.525
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.597
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.472
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.472
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.472
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.378
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.589
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.657
+```
+
+## yolox-tiny
 
 best mAP with out any strategy：
 

@@ -11,48 +11,121 @@ The dataset is the [FloW](http://www.orca-tech.cn/datasets/FloW/FloW-Img) datase
 
 - `coco-tools` below is the markup from `VOC` format to `json` format
 - `mmdetction` is the configuration file, results and logs involved, there is no need to submit the whole `mmdetection` project
-- `crop-image` is the cut image, used to pre-train the backbone
+- `crop-image` is the cut image and used to pre-train the backbone, read_video reads video and generates unlabeled data for self-supervised training
+
+Considering the computation power and performance, we choose the single stage `yolox-s` as the baseline. **refuses to use tricks commonly used in** competitions, including but not limited to: model ensemble, large-scale backbone such as SWIN, Cascade Faster RCNN, and various strategy combinations.
+
+### baseline
+
+```log
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.325
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.752
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.218
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.197
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.461
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.525
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.413
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.413
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.413
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.317
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.536
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.578
+```
 
 # Optimize
 
-Idea: Considering the arithmetic power and performance, choose single-stage `YOLOX-s` as `baseline`. **refuse to use** the commonly used trick for competitions, including but not limited to: model fusion, large-scale backbone such as swin, cascade faster rcnn, various strategy combinations.
+## Strategy 1, Center Loss pre-training backbone
 
-The very first idea is to use self-supervision to improve detection performance, after all, no labeling is required. But self-supervision + object detection is not elegant enough for the current paper, so I decided to give up and leave it as a major direction for the future.
+Instead of using COCO's pre-training experience, we use backbone can be pretrained to recognize foreground and background.
 
-## Strategy 1, Center Loss to pretrain backbone
+```log
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.350
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.781
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.263
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.224
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.492
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.506
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.452
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.452
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.452
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.363
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.569
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.587
+```
 
-But I found that the precision and recall of `baseline` is not very good, so is there a simple way to improve it? What I can think of is `backbone` can not use COCO pre-training experience, but pre-train `backbone` for this problem, and this `backbone` can effectively identify the foreground and background.
+<details><summary>Details</summary>
 
-Reading the source code reveals that it is not difficult to implement a pre-trained `backbone`, under `mmdetection/tools`.
+I find the accuracy and recall rate of baseline is not very good, so is there an easy way to improve it? What I can think of is that backbone can not use COCO's pre-training experience, but pre-training backbone for this problem, and this backbone can effectively identify the foreground and background.
 
-- `center_loss.py`, for the small recall improvement, read the source code of `YOLOX` and analyzed the reason, thought it was because the distinction of the front background features extracted by `backbone` was not obvious, which led to the possibility that the back `neck` and `head` thought the background features were foreground and the foreground features were background. So we use `center loss` to increase the differentiation of the representation. The accuracy of distinguishing the foreground from the background is 96.67%, +5.3% mAP, +3.2% mAR. Ablation experiments show that center loss is better than cross entropy loss alone.
-- `pretrain.py`, loaded pretrained `backbone` at detection
+It is not difficult to implement pre-trained backbone under `mmdetection/tools` :
 
-## Strategy 2, CIoU Loss to fix SimOTA vulnerability
+- `center_loss.py`, in view of the small increase in recall rate, read the source code of `YOLOX` and analyzed the reason, it is believed that the distinction of front background features extracted by backbone is not obvious, leading to neck and head behind may consider background features as foreground. The foreground feature is the background. Thus, Center Loss' is used to increase the distinction expressed. The accuracy of pre-background discrimination was 96.67%, +5.3% mAP, +3.2% mAR. Ablation experiments show that Center Loss is better than Cross entropy loss alone.
+- `pretrain.py`, load backbone during detection
 
-But strategy 1 also brings a problem that YOLOX-tiny does not improve significantly using this strategy, and YOLOX-tiny outperforms YOLOX-S 3.2% mAP in detection.
+</details>
 
-After reading the source code, we found that YOLOX's SimOTA mechanism has some loopholes when assigning samples to small targets, see the link on the right side of the repository for a detailed analysis. In short, due to the small target, the selected positive sample and the real target do not intersect, the loss of cls and obj is fine, but the loss of reg is 0, which is unreasonable, and the effect of using CIoU Loss correction is also very obvious.
+## Strategy two, CIoU Loss to correct defects of SimOTA
 
-## Strategy 3, Self Supervised Training
+```log
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.379
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.835
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.291
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.248
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.515
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.561
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.461
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.461
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.461
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.368
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.581
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.617
+```
 
-In the real world not all data is labeled. So how to make good use of unlabeled data? In the context of papers I've read before.
+<details><summary>Details</summary>
 
-- Microsoft has published a SOTA-related article in ICCV 2021 about semi-supervised target detection,  but it is complicated to adjust the parameters, and the model capacity has to be doubled which is not friendly to non-RMB players.
-- In the field of self-supervised object detection, DetCo is based on the Moco improvement whose papers and code I have read and found to be unfriendly to non-RMB players, and the Facebook AI Institute out of Moco and Simsiam idea is relatively novel and simple, but not easy to accept.
-- The baseline chosen by self-EMD is BYOL, and the derivation of the formula in it is relatively nice, but the structure of BYOL is dissuasive.
+However, strategy 1 also brings a problem. The detection effect of Yolox-Tiny is not significantly improved by using this strategy, and the detection effect of Yolox-Tiny is better than that of Yolox-S 3.2%mAP. The reasons are analyzed from the perspective of source code.
 
-In summary, is there a simple self-supervised training method that can be used for target detection in specific scenarios? Inspired by self-EMD, I have done the following simple work.
+After reading the source code, it is found that YOLOX's SimOTA mechanism has some bugs when allocating samples to small targets. For detailed analysis, please refer to the link on the right side of the repo. In short, because the target is small, the positive sample selected does not intersect with the real target, so the Loss of CLS and OBJ is no problem, but the Loss of REG is 0, which is unreasonable. CIoU Loss is used for correction, and the effect is obviously improved.
+
+</details>
+
+## Strategy 3: Use self-supervised pre-training with unlabeled data
+
+In `mmdetection/tools/ssl.py`:
+
+```log
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.383
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.819
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.303
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.247
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.525
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.597
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.472
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.472
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.472
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.378
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.589
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.657
+```
+
+<details><summary>Details</summary>
+
+In the real world, not all data is labeled. So how to make good use of unlabeled data? Based on the paper I read before, LET's talk about:
+
+- Semi-supervised object detection, Microsoft published a SOTA related article in ICCV 2021, but the parameters are complicated, and the model capacity needs to be doubled, which is not friendly to non-RMB players
+- Target detection in self-supervised area, DetCo improved based on Moco which paper and code I read and found are not friendly for non-RMB players, and Moco and Simsiam ideas from Facebook AI research are strange and simple, but not easy to accept.
+- The baseline of self-EMD is BYOL, and the formula derivation in it is also nice, but the self-monitoring network structure in the early years is encouraging.
+
+In conclusion, is there a simple self-supervised training method for target detection in specific scenarios? Inspired by self-EMD, I did the following simple tasks:
 
 <p align="center">
     <img src="./sample/ssl.jpg" width="600">
 </p>
 
-- Cut out several patches in the image, with blue in the middle as anchor, pink as positive samples, and purple as negative samples
-- Using cosine distance as the loss function, the representation of anchor and positive samples should be close to each other, and the representation of anchor and negative samples should be far from each other
-- Considering that the target detection is influenced by spatial information, the patch of positive samples must be next to the anchor.
+- Cut out several patches in the picture, the blue in the middle is regarded as anchor, pink is the positive sample, and purple is the negative sample
+- Using cosine distance as the loss function, the representation of Anchor and positive sample should be close, while the representation of Anchor and negative sample should be far away
+- Considering that target detection is greatly affected by spatial information, patch of positive sample must be adjacent to anchor
 
-The experimental results show that this pre-training approach is better than the labeled training approach. Here I just give my thoughts: 
+The experimental results show that the pre-training method is superior to the labeled training method. Here I only give my thinking: for the training mode with labels, the network only recognizes the background and target, throws a complete picture, and the network is only interested in the target area. If it is self-supervised, the network knows the distribution of data, or what the picture should look like, and is not particularly interested in any particular area. However, when the detection program starts to train and needs to be interested in certain areas, the network will know which areas it needs to be interested in, which areas are similar to the areas of interest, and which areas are not similar to the areas of interest, so that it can better locate the target.
 
-- For the labeled training method, the background and target are obtained by cutting the image, then the network only knows the background and the target, throwing a complete image, and the network is only interested in the target region; 
-- if it is self-supervised training, then all the network knows is the distribution of the data, or what the image should look like, and it is not particularly interested in a certain region; but when the detection program starts training and needs to be interested in certain regions, the network knows which regions it needs to be interested in, which regions are similar to the regions of interest, and which regions are not, so that it can better locate the target.
+</details>
