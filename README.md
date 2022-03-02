@@ -1,6 +1,6 @@
 [简体中文](https://github.com/muyuuuu/Flow-Detection/blob/main/README-zh.md)
 
-# YOLOX-S Object Detection
+# Self-Supervised Object Detection
 
 The dataset is the [FloW](http://www.orca-tech.cn/datasets/FloW/FloW-Img) dataset from Ouka, using `mmdetection` as a tool.
 
@@ -9,11 +9,11 @@ The dataset is the [FloW](http://www.orca-tech.cn/datasets/FloW/FloW-Img) datase
     <img src="./sample/res.gif" width="400">
 </p>
 
-- `coco-tools` below is the markup from `VOC` format to `json` format
-- `mmdetction` is the configuration file, results and logs involved, there is no need to submit the whole `mmdetection` project
-- `crop-image` is the cut image and used to pre-train the backbone, read_video reads video and generates unlabeled data for self-supervised training
+- `coco-tools` convert `VOC` format to `json` format
+- `mmdetction` contains the configuration file, results and logs, there is no need to submit the whole `mmdetection` project
+- `crop-image` is the crop image and used to pre-train the backbone, read_video reads video and generates unlabeled data for self-supervised training
 
-Considering the computation power and performance, we choose the single stage `yolox-s` as the baseline. **refuses to use tricks commonly used in** competitions, including but not limited to: model ensemble, large-scale backbone such as SWIN, Cascade Faster RCNN, and various strategy combinations.
+Considering the computation power and performance, we choose the single stage `yolox-s` as the baseline. **Refuses to use tricks commonly used in** competitions, including but not limited to: model ensemble, large-scale backbone such as SWIN, Cascade Faster RCNN, and various strategy combinations.
 
 ### baseline
 
@@ -55,12 +55,12 @@ Instead of using COCO's pre-training experience, we use backbone can be pretrain
 
 <details><summary>Details</summary>
 
-I find the accuracy and recall rate of baseline is not very good, so is there an easy way to improve it? What I can think of is that backbone can not use COCO's pre-training experience, but pre-training backbone for this problem, and this backbone can effectively identify the foreground and background.
+Is there an easy way to improve recall rate beacuse I find the that of baseline is not very good. What I can think of is that backbone can not use COCO's pre-training experience, but pre-training backbone for this problem which can effectively identify the foreground and background.
 
 It is not difficult to implement pre-trained backbone under `mmdetection/tools` :
 
-- `center_loss.py`, in view of the small increase in recall rate, read the source code of `YOLOX` and analyzed the reason, it is believed that the distinction of front background features extracted by backbone is not obvious, leading to neck and head behind may consider background features as foreground. The foreground feature is the background. Thus, Center Loss' is used to increase the distinction expressed. The accuracy of pre-background discrimination was 96.67%, +5.3% mAP, +3.2% mAR. Ablation experiments show that Center Loss is better than Cross entropy loss alone.
-- `pretrain.py`, load backbone during detection
+- `center_loss.py`, read the source code of `YOLOX` in view of the small increase in recall rate, it is believed that the distinction of front background features extracted by backbone is not obvious and then leading to neck and head behind may consider background features as foreground, the foreground feature is the background. Thus, Center Loss is used to increase the distinction expression. The accuracy of pre-background discrimination was 96.67%, +5.3% mAP, +3.2% mAR. Ablation experiments show that Center Loss is better than Cross entropy loss alone.
+- `pretrain.py`, load pretrained backbone during detection
 
 </details>
 
@@ -83,9 +83,9 @@ It is not difficult to implement pre-trained backbone under `mmdetection/tools` 
 
 <details><summary>Details</summary>
 
-However, strategy 1 also brings a problem. The detection effect of Yolox-Tiny is not significantly improved by using this strategy, and the detection effect of Yolox-Tiny is better than that of Yolox-S 3.2%mAP. The reasons are analyzed from the perspective of source code.
+However, strategy 1 also brings a problem. The detection effect of Yolox-Tiny is not significantly improved by using this strategy, and the detection effect of Yolox-Tiny is better than that of Yolox-S 3.2%mAP. 
 
-After reading the source code, it is found that YOLOX's SimOTA mechanism has some bugs when allocating samples to small targets. For detailed analysis, please refer to the link on the right side of the repo. In short, because the target is small, the positive sample selected does not intersect with the real target, so the Loss of CLS and OBJ is no problem, but the Loss of REG is 0, which is unreasonable. CIoU Loss is used for correction, and the effect is obviously improved.
+After reading the source code, it is found that YOLOX's SimOTA mechanism has some bugs when allocating positive samples to small objects. Please refer to the link on the right side of the repo for detailed analysis. In short, the positive sample selected does not intersect with the real object because the object is small, so the Loss of CLS and OBJ is no problem, but the Loss of REG is 0 which is unreasonable. CIoU Loss is used for correction and the effect is obviously improved.
 
 </details>
 
@@ -112,11 +112,11 @@ In `mmdetection/tools/ssl.py`:
 
 In the real world, not all data is labeled. So how to make good use of unlabeled data? Based on the paper I read before, LET's talk about:
 
-- Semi-supervised object detection, Microsoft published a SOTA related article in ICCV 2021, but the parameters are complicated, and the model capacity needs to be doubled, which is not friendly to non-RMB players
-- Target detection in self-supervised area, DetCo improved based on Moco which paper and code I read and found are not friendly for non-RMB players, and Moco and Simsiam ideas from Facebook AI research are strange and simple, but not easy to accept.
-- The baseline of self-EMD is BYOL, and the formula derivation in it is also nice, but the self-monitoring network structure in the early years is encouraging.
+- Semi-supervised object detection, Microsoft published a SOTA related article in ICCV 2021, but the parameters are complicated and the model capacity needs to be doubled, which is not friendly to non-RMB players
+- Object detection in self-supervised area, DetCo improved based on Moco which paper and code I read and found are not friendly for non-RMB players, and Moco and Simsiam ideas from Facebook AI research are strange and simple, but not easy to accept
+- The baseline of self-EMD is BYOL, and the formula derivation in it is also nice, but the self-monitoring network structure in the early years is not concise
 
-In conclusion, is there a simple self-supervised training method for target detection in specific scenarios? Inspired by self-EMD, I did the following simple tasks:
+In conclusion, is there a simple self-supervised training method for object detection in specific scenarios? Inspired by self-EMD, I did the following simple works:
 
 <p align="center">
     <img src="./sample/ssl.jpg" width="600">
@@ -124,8 +124,8 @@ In conclusion, is there a simple self-supervised training method for target dete
 
 - Cut out several patches in the picture, the blue in the middle is regarded as anchor, pink is the positive sample, and purple is the negative sample
 - Using cosine distance as the loss function, the representation of Anchor and positive sample should be close, while the representation of Anchor and negative sample should be far away
-- Considering that target detection is greatly affected by spatial information, patch of positive sample must be adjacent to anchor
+- Considering that object detection is greatly affected by spatial information, patch of positive sample must be adjacent to anchor
 
-The experimental results show that the pre-training method is superior to the labeled training method. Here I only give my thinking: for the training mode with labels, the network only recognizes the background and target, throws a complete picture, and the network is only interested in the target area. If it is self-supervised, the network knows the distribution of data, or what the picture should look like, and is not particularly interested in any particular area. However, when the detection program starts to train and needs to be interested in certain areas, the network will know which areas it needs to be interested in, which areas are similar to the areas of interest, and which areas are not similar to the areas of interest, so that it can better locate the target.
+The experimental results show that the pre-training method is superior to the labeled training method. Here I only give my thinking: for the training mode with labels, the network only recognizes the background and object. The network is only interested in the object region when throws a complete picture. If it is self-supervised, the network knows the distribution of data, or what the picture should look like, and is not particularly interested in any particular region. However, when the detection program starts to train and needs to be interested in certain region, the network will know which region it needs to be interested in, which region are similar to the region of interest, and which region are not similar to the region of interest, so that it can better locate the object.
 
 </details>
