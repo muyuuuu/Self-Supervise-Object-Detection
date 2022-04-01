@@ -129,3 +129,7 @@ In conclusion, is there a simple self-supervised training method for object dete
 The experimental results show that the pre-training method is superior to the labeled training method. Here I only give my thinking: for the training mode with labels, the network only recognizes the background and object. The network is only interested in the object region when throws a complete picture. If it is self-supervised, the network knows the distribution of data, or what the picture should look like, and is not particularly interested in any particular region. However, when the detection program starts to train and needs to be interested in certain region, the network will know which region it needs to be interested in, which region are similar to the region of interest, and which region are not similar to the region of interest, so that it can better locate the object.
 
 </details>
+
+# Thanks
+
+Supported by High-performance Computing Platform of XiDian University.
