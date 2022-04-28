@@ -85,7 +85,7 @@ It is not difficult to implement pre-trained backbone under `mmdetection/tools` 
 
 However, strategy 1 also brings a problem. The detection effect of Yolox-Tiny is not significantly improved by using this strategy, and the detection effect of Yolox-Tiny is better than that of Yolox-S 3.2%mAP. 
 
-After reading the source code, it is found that YOLOX's SimOTA mechanism has some bugs when allocating positive samples to small objects. Please refer to the link on the right side of the repo for detailed analysis. In short, the positive sample selected does not intersect with the real object because the object is small, so the Loss of CLS and OBJ is no problem, but the Loss of REG is 0 which is unreasonable. CIoU Loss is used for correction and the effect is obviously improved.
+After reading the source code, it is found that YOLOX's SimOTA mechanism has some bugs when allocating positive samples to small objects. Please refer to the link on the right side of the repo for detailed analysis. In short, the positive sample selected does not intersect with the real object because the object is small, so the Loss of CLS and OBJ is no problem, but the Loss of REG always is 1 which is unreasonable. CIoU Loss is used for correction and the effect is obviously improved.
 
 </details>
 
